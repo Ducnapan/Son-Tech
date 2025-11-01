@@ -1,0 +1,15 @@
+Intel and Advanced Micro Devices (AMD) have formed a collaborative advisory group, which includes representatives from major tech companies like Google, Microsoft, and Meta Platforms, to help guide the future direction of the x86 computer architecture, as the industry shifts towards handling dynamic artificial intelligence (AI) workloads.
+
+Intel CEO Pat Gelsinger stated that the x86 architecture and ecosystem are about to undergo one of the most significant transformations in decades, requiring new levels of customization, compatibility, and scalability to address both current and future customer demands.
+
+The companies announced on Tuesday that the group will focus on finding new methods to grow the x86 ecosystem by ensuring compatibility across various platforms and making software development easier.
+
+The group expressed its aim to improve customer choice and compatibility between hardware and software, streamline architectural guidelines for greater software consistency, standardize interfaces, and facilitate the integration of new features into operating systems, frameworks, and applications.
+
+The group’s founding members include Meta, Microsoft, Broadcom, Dell, Google (a unit of Alphabet), Hewlett Packard Enterprise, HP Inc., Lenovo, Oracle, and Red Hat (a unit of IBM).
+
+The x86 is a CPU architecture that originated from Intel’s 8086 chip, which was first launched in 1978. Over time, the architecture has evolved to offer broad compatibility and support a wide range of software applications, making it the leading architecture for personal computers and servers, according to the companies.
+
+The group seeks to further improve the x86 architecture’s compatibility, predictability, and consistency across various sectors, including data centers, cloud, client, edge, and embedded devices, as well as in emerging areas like AI, 3D packaging, and system architectures.
+
+AMD CEO Lisa Su stated that the group aims to ensure the x86 remains the preferred platform for developers and customers. To accomplish this, the group will seek input from the hardware and software communities on the essential functions and features the chip needs.

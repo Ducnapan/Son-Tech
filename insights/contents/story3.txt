@@ -1,0 +1,33 @@
+China’s tech giants are investing billions in nurturing the country’s competitors to OpenAI, with Alibaba Group and Tencent at the forefront of this effort.
+
+Since 2023, investors, including the nation’s largest tech firms, have valued at least six China-based startups focused on developing large language models at over $1 billion each. Most of these unicorns, known as China’s six “Little Artificial-Intelligence Dragons,” have received funding from Alibaba and Tencent.
+
+Although both companies have significantly cut back on their overall investments over the past two years, their focus on AI has grown stronger. Since 2023, 40% of Alibaba’s deals in China and 30% of Tencent’s have been directed at AI startups—marking record highs for both tech giants, according to Beijing-based deal data provider ITJuzi.
+
+Alibaba and Tencent are establishing themselves as leaders in the generative AI sector,” said Wei Sun, a senior analyst at market research firm Counterpoint Research. “Their investments in AI startups are a strategic move to enhance their technological advantage and broaden their market influence.
+
+Chinese tech giants, once recognized for their aggressive dealmaking, have shifted their focus to profitability in recent years due to Beijing’s regulatory crackdown on the sector, the impact of the Covid-19 pandemic, and a weakening Chinese economy. However, generative AI has emerged as a rare exception to their more cautious approach.
+
+Alibaba and Tencent have prioritized AI as a key strategy, aiming to capitalize on the technology by developing their own foundational AI models and offering access to these models, along with AI computing power, through their cloud services.
+
+Meanwhile, China’s AI-model market is becoming increasingly saturated, with over 190 products now available, sparking concerns among some companies about falling behind. By investing in AI unicorns, companies aim to gain early access to research and development, along with models that could enhance their product offerings and business practices, helping them maintain a competitive edge in the industry.
+
+Charlie Dai, an analyst at market research firm Forrester, noted that big tech companies’ investments in AI startups are vital to their long-term strategies, enabling them to remain competitive and innovative in a rapidly changing tech environment.
+
+Alibaba and Tencent did not respond to requests for comment for this article. Much like how Microsoft and Amazon supported OpenAI and Anthropic, respectively, both companies have provided substantial portions of their investments to portfolio companies in the form of computing power.
+
+In May, Alibaba announced that it had recently invested approximately $800 million for a 36% stake in Beijing-based Moonshot AI. According to sources familiar with the matter, over $300 million of that investment was provided as credits for using Alibaba’s cloud-computing infrastructure. When these credits are utilized, Alibaba can record them as revenue, positively impacting its financial performance, the sources added.
+
+Alibaba CEO Eddie Wu mentioned in an analyst call last week that the company anticipates its revenue from external cloud customers to resume double-digit growth within the next one to two quarters, fueled by the increasing adoption of AI cloud services.
+
+In China, offering computing resources can be more valuable than cash, especially since the U.S. has effectively restricted access to advanced semiconductors to limit Beijing’s progress in AI development.
+
+Computing tasks usually make up the bulk of capital expenditures for LLM startups. An Nvidia processor designed for AI workloads can cost as much as a Cadillac sedan, and training LLMs demands thousands of these chips.
+
+Investors support computing power needs in various ways, such as renting out hardware, selling cloud computing services at discounted rates, and providing funds specifically allocated for purchasing chips. Some startups leverage their investors’ networks to acquire restricted chips.
+
+In December, a Beijing-based LLM unicorn purchased several hundred of Nvidia’s H100 chips through an affiliate of one of its investors in Singapore, according to sources familiar with the transaction. Similarly, last September, a Shanghai-based startup focused on developing a healthcare-oriented LLM rented computing power powered by Nvidia’s A100 chips from a state-run AI data center in Chongqing, after an investor helped secure a below-market rate.
+
+According to those familiar with AI investments, capital-hungry startups now find it easier to secure funding from tech giants compared to a few years ago, when dominant investors often demanded exclusive agreements that barred startups from accepting funds from competitors. In recent years, Beijing has tightened antitrust regulations and clamped down on what regulators described as the “disorderly capital expansion” of tech companies.
+
+Generative AI offers tremendous business potential, and no tech giant wants to be left behind, said Forrester’s Dai. He further noted that by investing in top startups, even those with competitor backing, tech giants can enhance their chances of capturing these opportunities.

@@ -1,0 +1,45 @@
+Apple, Nvidia, and Microsoft are reportedly discussing potential investments in OpenAI, the creator of ChatGPT, just as the company is about to encounter increased competition in the rapidly growing AI market.
+
+A significant portion of this new competition comes from startups aiming to offer services that are not only more affordable than OpenAI’s but also more effective in handling specific, specialized tasks.
+
+At least one major tech company recognizes the potential of the new wave of AI startups. Meta Platforms CEO, Mark Zuckerberg, is positioning the company as a supporter of smaller developers by offering free access to Meta’s advanced AI model, Llama. Meanwhile, Google has also introduced an open-source AI, though it isn’t as powerful as Meta’s.
+
+In a letter from July, Zuckerberg advocated for an open-source strategy, stating that it would allow more people worldwide to access the advantages and opportunities of AI, rather than consolidating control among a few tech giants.
+
+Open-source software is freely available for commercial use by almost anyone. A well-known example is the Android operating system, which was created by Google but can be used by any manufacturer for mobile devices without the need for licensing fees.
+
+This differs from the common “closed” model used by companies that restrict access to their software. For example, Microsoft charges manufacturers a licensing fee to install its Windows operating system on computers, while Apple prohibits other companies from using its iPhone or Mac operating systems.
+
+OpenAI primarily follows the latter model, charging both individual users and companies for access to its most advanced AI models.
+
+Many experts predict that in the future, we will use a mix of AIs—some from closed platforms like OpenAI and Google, and others from open-source alternatives that Zuckerberg supports. The balance between these sources will ultimately reveal whether companies’ massive investments in developing advanced AI were justified.
+
+The latest example of such investment is that Apple and Nvidia are in discussions to join Microsoft in backing OpenAI’s upcoming financing round, which would value the company at $100 billion.
+
+Simultaneously, open-source AI is closing the gap with the early industry leaders, particularly in routine business applications that prioritize consistent performance and cost-effectiveness.
+
+Meta announced on Thursday that various versions of its Llama AI model have been downloaded nearly 350 million times by developers and hobbyists—10 times more than a year ago. While a direct comparison to ChatGPT isn’t feasible, OpenAI reports that ChatGPT now has 200 million active users each week.
+
+Julien Launay from Adaptive ML notes that for many common applications, AIs focused on specific tasks can be more efficient and cost-effective. His startup uses Llama to create small, tailored AIs for companies, which, according to him, are easier for users to customize compared to large, closed systems like ChatGPT.
+
+Companies like DoorDash, Shopify, Goldman Sachs, and Zoom have reported using open-source AIs for various tasks, including customer service and meeting summaries.
+
+Procore Technologies, a company that develops a platform for managing complex construction projects, serves as a prime example of how both closed and open AIs can be utilized for practical tasks, such as cost estimation and coordinating construction activities.
+
+AI plays a useful role at many stages of the construction process. Earlier this year, when Procore introduced new features using large language models, the company utilized OpenAI’s ChatGPT through Microsoft’s cloud platform, according to Rajitha Chaparala, Procore’s vice president of product and AI. While this type of AI used to be expensive, costs have significantly dropped over the past year.
+
+Procore has now developed software that allows for the seamless integration of almost any AI across its platform.
+
+This highlights a potential challenge for OpenAI in retaining customers. Most companies prefer not to rely on a single AI provider, and for now, switching between different AI models is fairly simple. As a result, OpenAI’s models, even as they become more cost-effective, are competing with the custom AIs that companies can now build themselves.
+
+According to an OpenAI spokesperson, open-source AI could be a practical choice for use on individual devices like AI-powered PCs and smartphones. The spokesperson also mentioned that OpenAI welcomes competition for its services, as the company is confident in its ability to offer the capabilities, pricing, and performance that software developers seek.
+
+The OpenAI spokesperson notes that competition from open-source AIs expands the number of engineers skilled in using AI, which in turn boosts the demand for OpenAI’s services.
+
+Ali Farhadi, CEO of the Allen Institute for Artificial Intelligence, argues that AI systems used in sensitive areas such as medicine and insurance will require even more transparency than what most open-source AI models currently provide.
+
+In February, the Allen Institute, a nonprofit focused on solving global challenges through AI, launched its own open-source AI. Uniquely, the institute also made public all the training data and the steps used to fine-tune the model for improved accuracy.
+
+There are differing views on which approach better addresses broader safety concerns and prevents worst-case AI scenarios, like Skynet in the “Terminator” movies. Supporters of closed systems argue that they have the resources and control to prevent misuse, whereas open-source tools could be exploited by malicious individuals. In contrast, proponents of open-source believe their systems benefit from public scrutiny, making it easier to spot issues and address unintended harms, which can be harder to detect in closed systems.
+
+Before we ever face the prospect of sentient AI overlords, developers of less powerful systems will first need to demonstrate that their significant investments are justified.

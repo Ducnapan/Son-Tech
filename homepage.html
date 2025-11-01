@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Parallax Night — Smooth</title>
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+  :root{--bg:#0b0f1a;--ink:#e7ecff;--muted:#a1a9c9;--accent:#6ee7ff}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji;
+    color:var(--ink);background:radial-gradient(1200px 800px at 70% -10%, #11203a 0%, transparent 60%), var(--bg);
+    overflow-x:hidden
+  }
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:6rem 1.25rem}
+  .btn{display:inline-block;padding:.9rem 1.25rem;border-radius:999px;background:linear-gradient(135deg,#1b2a44,#0f1a2e);color:var(--ink);border:1px solid #243a63;backdrop-filter:blur(6px)}
+  .hero{position:relative;min-height:100svh;display:grid;place-items:center;overflow:hidden}
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:0;text-align:center;letter-spacing:.02em;text-shadow:0 6px 30px #0008}
+  .sub{max-width:60ch;margin:.75rem auto 1.5rem;color:var(--muted);text-align:center}
+
+  /* Parallax */
+  .parallax{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .layer{
+    position:absolute;inset:-10vh -10vw;transform:translate3d(0,0,0);
+    will-change:transform;background-position:center;background-size:cover;opacity:.6;mix-blend-mode:screen
+  }
+  .layer.mountains{
+    background-image:url('stock_bg.avif');
+    opacity:.45;mix-blend-mode:screen
+  }
+
+  section{scroll-margin-top:10vh}
+  .cardgrid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{border:1px solid #243a63;background:linear-gradient(180deg,#0f1830,#0b1123);border-radius:18px;padding:1.25rem;box-shadow:0 20px 60px #00000055}
+  .card h3{margin:.25rem 0 .5rem;font-size:1.1rem}
+  .cta{display:flex;gap:1rem;justify-content:center;margin-top:1.25rem;flex-wrap:wrap}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#233a63,transparent);margin:3.5rem 0}
+  .feature{display:grid;gap:2rem;align-items:center;grid-template-columns:1.2fr .8fr}
+  .feature img{width:100%;border-radius:22px;border:1px solid #243a63;box-shadow:0 20px 60px #00000055;display:block;object-fit:cover}
+  @media (max-width:900px){.feature{grid-template-columns:1fr}}
+
+  .footer{color:var(--muted);text-align:center;padding:4rem 1rem}
+  .sparkle{position:absolute;inset:0;pointer-events:none;opacity:.25;background:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 80% 30%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 40% 70%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 65% 85%,#fff,transparent 60%);
+    animation:twinkle 7s linear infinite}
+  @keyframes twinkle{50%{opacity:.4}100%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.layer{transform:none !important}.sparkle{animation:none}}
+
+  /* Slide-in on scroll */
+  .reveal{ opacity:0; transform:translateX(var(--slide,0));
+    transition:transform .8s cubic-bezier(.22,1,.36,1), opacity .8s ease-out; will-change:transform,opacity }
+  .reveal.from-left{ --slide:-60px } .reveal.from-right{ --slide:60px }
+  .reveal.in-view{ opacity:1; transform:translateX(0) }
+  .reveal > *{ transition:inherit }
+  .reveal.in-view > *:nth-child(1){ transition-delay:.05s }
+  .reveal.in-view > *:nth-child(2){ transition-delay:.12s }
+  .reveal.in-view > *:nth-child(3){ transition-delay:.18s }
+
+  /* Brand */
+  .brand{
+    position:absolute; top:calc(16px + env(safe-area-inset-top));
+    left:calc(16px + env(safe-area-inset-left));
+    z-index:5; font-weight:800; letter-spacing:.08em; color:var(--ink);
+    text-decoration:none; padding:.4rem .75rem;
+  }
+  .brand:hover{ opacity:.9 }
+
+  /* Theater carousel */
+  .theater-carousel{
+    --gap: 1rem; --visible: 3; --ease: cubic-bezier(.22,1,.36,1);
+    position: relative; max-width: 1100px; margin: 3rem auto; padding: 0 3.25rem;
+  }
+  @media (max-width: 900px){ .theater-carousel{ --visible: 2 } }
+  @media (max-width: 600px){ .theater-carousel{ --visible: 1; padding: 0 2.5rem } }
+  .tc-viewport{ overflow:hidden }
+  .tc-track{
+    list-style:none; padding:0; margin:0;
+    display:flex; align-items:stretch; gap:var(--gap);
+    will-change:transform; transform:translate3d(0,0,0); transition:transform .6s var(--ease);
+  }
+  .tc-slide{
+    flex:0 0 calc((100% - var(--gap) * (var(--visible) - 1)) / var(--visible));
+    transform-origin:center bottom;
+    transition:transform .45s var(--ease), filter .45s var(--ease), opacity .45s var(--ease);
+    filter:brightness(.75) saturate(.92); opacity:.85; transform:scale(.94);
+  }
+  .tc-slide.is-center{ filter:none; opacity:1; transform:scale(1) }
+  .tc-slide .card{
+    border:1px solid #243a63; background:linear-gradient(180deg,#0f1830,#0b1123);
+    border-radius:18px; padding:1.25rem; box-shadow:0 20px 60px #0006; height:100%;
+    display:flex; flex-direction:column; gap:.5rem;
+  }
+  .tc-meta{ font-size:.85rem; color:var(--muted); display:flex; gap:.75rem; flex-wrap:wrap }
+  .tc-title{ margin:.25rem 0 .25rem; font-size:1.05rem; line-height:1.25 }
+  .tc-link{ margin-top:auto; display:inline-block; color:var(--accent); text-decoration:none }
+  .tc-nav{
+    position:absolute; top:50%; translate:0 -50%; width:44px; height:44px; border-radius:999px;
+    border:1px solid #243a63; background:linear-gradient(135deg,#1b2a44,#0f1a2e); color:var(--ink);
+    box-shadow:0 10px 30px #0008; cursor:pointer; z-index:2;
+  }
+  .tc-prev{ left:.75rem } .tc-next{ right:.75rem }
+  .tc-nav:focus-visible{ outline:2px solid var(--accent) }
+  @media (prefers-reduced-motion: reduce){ .tc-track, .tc-slide{ transition:none !important } }
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <a class="brand" href="#top"><h2>SON TECH</h2></a>
+
+  <div class="parallax" aria-hidden="true">
+    <div class="layer stars" data-speed="0.15"></div>
+    <div class="layer mountains" data-speed="0.3"></div>
+    <div class="layer fog" data-speed="0.55"></div>
+    <div class="sparkle"></div>
+  </div>
+
+  <div class="wrap" style="text-align:center;position:relative;z-index:1">
+    <h1>Ascending the Peak of our time</h1>
+    <p class="sub">Fast, Accurate and Precised</p>
+    <div class="cta">
+      <a class="btn" href="#features">See Features</a>
+      <a class="btn" href="#cards">Browse Cards</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="features">
+    <div class="feature reveal from-left">
+      <div>
+        <h2 style="margin:0 0 .5rem">About Us</h2>
+        <p style="color:var(--muted);max-width:60ch">
+          Son Tech Global is an investment fund based in Vietnam, dedicated to partnering with promising businesses to unlock their full potential. We actively collaborate with visionary founders, delivering innovative solutions to optimize operational efficiency and create distinctive value in the market.
+        </p>
+        <div class="cta"><a class="btn" href="#top">See more</a></div>
+      </div>
+      <img alt="City night" src="./night_vn.png">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="feature reveal from-right">
+      <img alt="Bitcoin" src="./bitcoin.png">
+      <div>
+        <h2 style="margin:0 0 .5rem">Venture Capital Portfolio</h2>
+        <p style="color:var(--muted);max-width:60ch">
+          Since 2020, with a venture capital fund of $15 million USD, Son Tech Global has supported startups across Australia, Canada, Africa, the United States, Singapore, and Vietnam, accompanying them on their journey of growth and innovation
+        </p>
+        <div class="cta"><a class="btn" href="#cards">Explore</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="cards">
+    <h2 style="margin:0 0 1rem">Insight</h2>
+
+    <!-- Theater Carousel (data-driven) -->
+    <section class="theater-carousel" aria-label="Featured items">
+      <button class="tc-nav tc-prev" aria-label="Previous">&#10094;</button>
+      <div class="tc-viewport">
+        <ul class="tc-track"><!-- slides injected from JSON --></ul>
+      </div>
+      <button class="tc-nav tc-next" aria-label="Next">&#10095;</button>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  Built with vanilla vibes • <a href="#top">See more</a>
+</footer>
+
+<script>
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Parallax */
+  if(!reduceMotion){
+    const hero = document.querySelector('.hero');
+    const layers = [...document.querySelectorAll('.layer')];
+    let target = 0, current = 0;
+    let last = performance.now();
+    const easePerSec = 7;
+
+    function computeTarget(){
+      const r = hero.getBoundingClientRect();
+      target = Math.min(1, Math.max(0, (0 - r.top) / (r.height || 1)));
+    }
+
+    function tick(now){
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      current += (target - current) * (1 - Math.exp(-easePerSec * dt));
+      for(const el of layers){
+        const speed = Math.max(0, Math.min(1, parseFloat(el.dataset.speed||0.2)));
+        const y = current * 100 * speed;
+        el.style.transform = `translate3d(0, ${y}px, 0)`;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    computeTarget();
+    requestAnimationFrame(tick);
+    addEventListener('scroll', computeTarget, {passive:true});
+    addEventListener('resize', computeTarget, {passive:true});
+    addEventListener('orientationchange', computeTarget, {passive:true});
+  }
+
+  /* Reveal on scroll */
+  (function(){
+    const els = [...document.querySelectorAll('.reveal')];
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const io = new IntersectionObserver((entries, obs) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          obs.unobserve(e.target);
+        }
+      }
+    }, { root: null, threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  /* === Data-driven theater carousel === */
+  (async function(){
+    const root = document.querySelector('.theater-carousel');
+    const track = root.querySelector('.tc-track');
+    const viewport = root.querySelector('.tc-viewport');
+    const prevBtn = root.querySelector('.tc-prev');
+    const nextBtn = root.querySelector('.tc-next');
+
+    // Load JSON from insights/path.json
+    let data = [];
+    try {
+      const res = await fetch('./insights/path.json', { cache: 'no-store' });
+      data = await res.json();
+    } catch (e) {
+      console.error('Failed to load insights/path.json', e);
+    }
+
+    // Build slides
+    function buildSlides(items){
+      track.innerHTML = items.map(i => `
+        <li class="tc-slide" data-id="${i.id}">
+          <div class="card">
+            <div class="tc-meta">
+              <span>${i.date}</span><span>•</span><span>${i.type}</span>
+            </div>
+            <h3 class="tc-title">${i.title}</h3>
+            <a class="tc-link" href="${i.source}" target="_blank" rel="noopener">Read source →</a>
+          </div>
+        </li>
+      `).join('');
+    }
+    buildSlides(data);
+
+    // Carousel logic
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let slides = Array.from(track.children);
+    if (!slides.length) return;
+
+    let current = 0, clonesHead = [], clonesTail = [];
+    let slideW = 0, gapPx = 0, visible = 3;
+    let autoplayTimer = null;
+    let isDragging = false, startX = 0, startTx = 0;
+
+    function cssVarInt(el, name, fallback){
+      const v = getComputedStyle(el).getPropertyValue(name).trim();
+      const n = parseInt(v, 10); return isNaN(n) ? fallback : n;
+    }
+    function px(v){ return parseFloat(String(v).split(' ')[0]) || 0 }
+
+    function measure(){
+      visible = cssVarInt(root, '--visible', 3);
+      slides = Array.from(track.querySelectorAll('.tc-slide')).filter(n=>!n.hasAttribute('aria-hidden'));
+      slideW = slides[0]?.offsetWidth || 0;
+      gapPx = px(getComputedStyle(track).gap);
+    }
+
+    function makeClones(){
+      clonesHead.forEach(n=>n.remove()); clonesTail.forEach(n=>n.remove());
+      clonesHead=[]; clonesTail=[];
+      const n = visible + 1;
+      for(let i=slides.length - n; i<slides.length; i++){
+        const c = slides[i].cloneNode(true);
+        c.setAttribute('aria-hidden','true');
+        track.insertBefore(c, track.firstChild);
+        clonesHead.push(c);
+      }
+      for(let i=0;i<n;i++){
+        const c = slides[i].cloneNode(true);
+        c.setAttribute('aria-hidden','true');
+        track.appendChild(c);
+        clonesTail.push(c);
+      }
+    }
+
+    function setTransform(index, animate=true){
+      const dist = index * (slideW + gapPx);
+      if(!animate) track.style.transition = 'none';
+      track.style.transform = `translate3d(${-dist}px,0,0)`;
+      if(!animate){ track.getBoundingClientRect(); track.style.transition = '' }
+      spotlight(index);
+    }
+
+    function spotlight(index){
+      const all = Array.from(track.children);
+      all.forEach(el=>el.classList.remove('is-center'));
+      const centerOffset = Math.floor(visible/2);
+      const centerIndex = index + centerOffset;
+      if(centerIndex >= 0 && centerIndex < all.length){
+        all[centerIndex].classList.add('is-center');
+      }
+    }
+
+    function normalize(){
+      const n = visible + 1;
+      const total = slides.length;
+      if(current < 0){ current += total; setTransform(current + n, false) }
+      else if(current >= total){ current -= total; setTransform(current + n, false) }
+    }
+
+    function go(delta){ current += delta; setTransform(current + (visible + 1), true) }
+
+    track.addEventListener('transitionend', normalize);
+
+    function setup(){
+      measure();
+      makeClones();
+      current = 0;
+      setTransform(current + (visible + 1), false);
+    }
+
+    // Controls
+    prevBtn.addEventListener('click', ()=>go(-1));
+    nextBtn.addEventListener('click', ()=>go(1));
+    root.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') go(-1);
+      if(e.key === 'ArrowRight') go(1);
+    });
+    root.tabIndex = 0;
+
+    // Autoplay
+    function startAutoplay(){ if(reduce) return; stopAutoplay(); autoplayTimer = setInterval(()=>go(1), 3000) }
+    function stopAutoplay(){ if(autoplayTimer) clearInterval(autoplayTimer) }
+    root.addEventListener('mouseenter', stopAutoplay);
+    root.addEventListener('mouseleave', startAutoplay);
+    root.addEventListener('focusin', stopAutoplay);
+    root.addEventListener('focusout', startAutoplay);
+
+    // Drag / swipe
+    function pointerDown(e){
+      isDragging = true;
+      startX = e.clientX || e.touches?.[0]?.clientX || 0;
+      const m = /translate3d\((-?\d+(\.\d+)?)px/.exec(getComputedStyle(track).transform);
+      startTx = m ? parseFloat(m[1]) : 0;
+      track.style.transition = 'none';
+    }
+    function pointerMove(e){
+      if(!isDragging) return;
+      const x = e.clientX || e.touches?.[0]?.clientX || 0;
+      const dx = x - startX;
+      track.style.transform = `translate3d(${startTx + dx}px,0,0)`;
+    }
+    function pointerUp(e){
+      if(!isDragging) return;
+      isDragging = false;
+      track.style.transition = '';
+      const x = e.changedTouches?.[0]?.clientX ?? e.clientX ?? startX;
+      const dx = x - startX;
+      const threshold = (slideW + gapPx) * 0.25;
+      if(dx > threshold) go(-1);
+      else if(dx < -threshold) go(1);
+      else setTransform(current + (visible + 1), true);
+    }
+    viewport.addEventListener('mousedown', pointerDown);
+    window.addEventListener('mousemove', pointerMove);
+    window.addEventListener('mouseup', pointerUp);
+    viewport.addEventListener('touchstart', pointerDown, {passive:true});
+    viewport.addEventListener('touchmove', pointerMove, {passive:true});
+    viewport.addEventListener('touchend', pointerUp);
+
+    // Resize
+    let resizeTO;
+    window.addEventListener('resize', ()=>{
+      clearTimeout(resizeTO);
+      resizeTO = setTimeout(()=>{ setup(); }, 120);
+    });
+
+    // Init
+    setup();
+    startAutoplay();
+  })();
+</script>
+</body>
+</html>

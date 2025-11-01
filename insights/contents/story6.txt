@@ -1,0 +1,43 @@
+The artificial intelligence arms race initially focused on creating massive models trained on vast amounts of data, aiming to replicate human-level intelligence.
+
+Currently, both major tech companies and startups are focusing on downsizing AI software to make it more affordable, efficient, and tailored to specific tasks. This type of AI software, known as small or medium language models, uses less data for training and is often tailored for specific tasks.
+
+The biggest models, such as OpenAI’s GPT-4, require over $100 million to develop and utilize more than a trillion parameters, which indicates their size. In contrast, smaller models are typically trained on more focused datasets, like legal issues, and can be developed for under $10 million, using fewer than 10 billion parameters. These smaller models also consume less computing power, making each query response more cost-effective.
+
+Microsoft has emphasized its Phi series of small models, which CEO Satya Nadella claims are 1/100th the size of the free model behind OpenAI’s ChatGPT but can perform many tasks almost as effectively. Yusuf Mehdi, Microsoft’s chief commercial officer, believes that the future will involve a variety of different models.
+
+Microsoft was among the first major tech companies to invest billions in generative AI, but it soon realized the operational costs were higher than expected, according to Mehdi. Recently, Microsoft introduced AI laptops that utilize dozens of AI models for search and image generation. These models are so efficient that they can run on the device itself, without needing access to large cloud-based supercomputers like ChatGPT does.
+
+This year, Google, along with AI startups Mistral, Anthropic, and Cohere, have also launched smaller models. In June, Apple revealed its AI roadmap, which includes plans to use small models that can run entirely on phones, making the software faster and more secure.
+
+Even OpenAI, a leader in the large-model movement, has recently introduced a version of its flagship model that is more cost-effective to operate. A spokeswoman mentioned that the company is considering releasing smaller models in the future.
+
+For tasks such as summarizing documents or generating images, large models can be excessive—comparable to using a tank for grocery shopping.
+
+Illia Polosukhin, now working on blockchain technology and co-author of a groundbreaking 2017 Google paper that sparked the current generative AI boom, stated that it shouldn’t require quadrillions of operations to calculate 2 + 2.
+
+Businesses and consumers are also seeking more cost-effective methods to operate generative AI-based technology, given that its returns remain uncertain.
+
+Yoav Shoham, co-founder of the Tel Aviv-based AI company AI21 Labs, noted that small models, which require less computing power, can answer questions at a fraction of the cost of large language models—often as low as one-sixth the cost. Shoham emphasized that for applications involving hundreds of thousands or millions of responses, using a large model is not economically viable.
+
+The key is to fine-tune these smaller models on specific datasets, such as internal communications, legal documents, or sales numbers, to carry out particular tasks like writing emails. This approach enables small models to perform as effectively as large models on these tasks, but at a much lower cost.
+
+Alex Ratner, co-founder of Snorkel AI, a startup that assists companies in customizing AI models, stated that the current frontier of AI is getting these smaller, specialized models to function effectively in less exciting but crucial areas.
+
+Experian, the credit-rating company, transitioned from using large models to smaller ones for its AI chatbots that provide financial advice and customer service.
+
+Ali Khan, Experian’s chief data officer, stated that after being trained on the company’s internal data, the smaller models performed as effectively as the larger ones, but at a significantly lower cost. He mentioned that the models are trained on a well-defined problem area and specific set of tasks, rather than something unrelated like providing a recipe for flan.
+
+Clara Shih, head of AI at Salesforce, noted that the smaller models are also faster. Shih explained that with large models, you end up overpaying and experiencing latency issues, describing them as overkill.
+
+The shift to smaller models is occurring as advancements in publicly released large models are slowing. Since OpenAI’s release of GPT-4 last year, which marked a significant improvement over GPT-3.5, no new models have achieved a similar leap in capabilities. Researchers attribute this slowdown to factors such as a lack of high-quality, new data for training.
+
+This trend has shifted focus towards smaller models.
+
+We’re in a brief period of waiting,” said Sébastien Bubeck, the Microsoft executive leading the Phi model project. “It’s logical that our focus shifts to making these models more efficient.
+
+It remains uncertain whether this lull is temporary or indicative of a broader technological issue. However, the focus on small models highlights AI’s evolution from impressive, science-fiction-like demonstrations to the more practical, yet less thrilling, task of integrating it into business operations.
+
+Companies are not abandoning large models. Apple announced that it is integrating ChatGPT into its Siri assistant for more advanced tasks such as composing emails. Microsoft revealed that the latest version of Windows would incorporate the most recent model from OpenAI.
+
+Nevertheless, both companies have made the OpenAI integrations a minor aspect of their overall AI offerings. Apple, for instance, mentioned it for just two minutes during a nearly two-hour presentation.

@@ -1,0 +1,45 @@
+[
+    {
+      "id": "item_001",
+      "title": "Intel and AMD Establish Advisory Group to Shape the Future of X86 Architecture",
+      "date": "16/12/2024",
+      "type": "Enterprise",
+      "source": "./insights/contents/story1.txt"
+    },
+    {
+      "id": "item_002",
+      "title": "OpenAI Faces Escalating Threats from Growing Competition",
+      "date": "16/12/2024",
+      "type": "Enterprise",
+      "source": "./insights/contents/story2.txt"
+    },
+    {
+      "id": "item_003",
+      "title": "Alibaba and Tencent Broaden Their Reach for AI Startups",
+      "date": "16/12/2024",
+      "type": "Enterprise",
+      "source": "./insights/contents/story3.txt"
+    },
+    {
+      "id": "item_004",
+      "title": "Seed-Stage Startups Face Shifting Expectations from Venture Investors",
+      "date": "16/12/2024",
+      "type": "Insight",
+      "source": "./insights/contents/story4.txt"
+    },
+    {
+      "id": "item_005",
+      "title": "Why No Major Tech Company Has Succeeded in Ousting Nvidia as the AI Leader",
+      "date": "16/12/2024",
+      "type": "Enterprise Insight",
+      "source": "./insights/contents/story5.txt"
+    },
+    {
+        "id": "item_006",
+        "title": "Small AI Models: The New Focus for Tech Giants",
+        "date": "16/12/2024",
+        "type": "Insight",
+        "source": "./insights/contents/story6.txt"
+    }
+  ]
+  

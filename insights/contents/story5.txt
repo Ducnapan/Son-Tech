@@ -1,0 +1,55 @@
+Nvidia is well-known for creating AI chips, but its most crucial achievement is establishing a business stronghold that secures its customers while deterring competitors. This defensive strategy relies heavily on both software and hardware components.
+
+Over the last twenty years, Nvidia has developed what the tech industry refers to as a ‘walled garden,’ similar to the one built by Apple. However, while Apple’s ecosystem of software and services targets consumers, Nvidia has primarily focused on catering to developers who use its chips to create artificial intelligence systems and other software.
+
+Nvidia’s walled garden is the reason why, despite facing competition from other chip manufacturers and tech giants like Google and Amazon, it is unlikely that Nvidia will lose a significant portion of the AI market in the coming years.
+
+This also sheds light on why, in the long run, the competition for the territory Nvidia currently dominates will likely center around its software expertise, not just its chip design. It also explains why competitors are rushing to create software that can bypass Nvidia’s defensive barrier.
+
+At the heart of Nvidia’s walled garden is a software platform called CUDA. Introduced in 2007, CUDA addressed a problem that didn’t yet exist: how to run non-graphics software, such as encryption algorithms and cryptocurrency mining, on Nvidia’s specialized chips, originally designed for demanding tasks like 3-D graphics and video games.
+
+CUDA allowed Nvidia’s graphics-processing units (GPUs) to handle a wide range of computing tasks beyond graphics. This included AI software, whose rapid growth in recent years has propelled Nvidia to become one of the most valuable companies globally.
+
+Importantly, CUDA was only the starting point. Year after year, Nvidia continued to meet the demands of software developers by releasing specialized code libraries, enabling a vast range of tasks to be executed on its GPUs at speeds unattainable with traditional, general-purpose processors from companies like Intel and AMD.
+
+The significance of Nvidia’s software platforms is reflected in the fact that, for years, the company has employed more software engineers than hardware engineers. Nvidia’s CEO, Jensen Huang, recently referred to this integrated approach as ‘full-stack computing,’ highlighting that Nvidia produces everything from the chips to the software necessary for developing AI.
+
+Whenever a competitor introduces AI chips to challenge Nvidia, they face the daunting task of competing with systems that Nvidia’s customers have been utilizing for over 15 years to develop vast amounts of code. Transitioning that software to a rival’s platform is often a challenging process.
+
+During its June shareholders meeting, Nvidia revealed that CUDA now encompasses over 300 code libraries and 600 AI models, and it supports 3,700 GPU-accelerated applications utilized by more than five million developers across approximately 40,000 companies.
+
+According to Bill Pearson, an Intel vice president specializing in AI for cloud computing, much of this collaboration is aimed at creating open-source alternatives to CUDA. Intel engineers are involved in two such projects, one of which includes partnerships with Arm, Google, Samsung, and Qualcomm. Meanwhile, OpenAI, the company behind ChatGPT, is also developing its own open-source initiative.
+
+Investors are increasingly backing startups that are developing alternatives to CUDA. This surge in investment is partly fueled by the potential for engineers at many of the world’s tech giants to enable companies to use any chips they prefer, thereby avoiding what some in the industry refer to as the ‘CUDA tax.
+
+Groq, a startup poised to capitalize on the growing open-source software movement, recently secured a $640 million investment, bringing its valuation to $2.8 billion, with plans to develop chips that will compete with Nvidia’s.
+
+Tech giants are also pouring resources into developing their own alternatives to Nvidia chips. Google and Amazon have both created custom chips for AI training and deployment, and in 2023, Microsoft announced plans to do the same.
+
+One of the most successful challengers to Nvidia’s dominance in the AI chip market is AMD. Although it remains much smaller than Nvidia—projecting $4.5 billion in revenue from its Instinct line of AI chips in 2024—AMD is making significant investments to hire software engineers, according to Andrew Dieckman, an AMD vice president.
+
+He mentioned that they have significantly expanded their software resources. Last month, AMD announced its acquisition of Silo AI for $665 million, adding 300 AI engineers to their team.
+
+Microsoft and Meta Platforms, both significant Nvidia customers, also purchase AMD’s AI chips, indicating a desire to foster competition for one of the most expensive components in tech giants’ budgets.
+
+Despite this, Malik from Citi Research anticipates that Nvidia will retain approximately 90% of the market share in AI-related chips over the next two to three years.
+
+To fully grasp the pros and cons of alternative options, it’s important to understand the process of building a ChatGPT-like AI without relying on any Nvidia hardware or software.
+
+Babak Pahlavan, CEO of the startup NinjaTech AI, mentioned that he would have chosen Nvidia’s hardware and software for launching his company—if it had been within his budget. However, the shortage of Nvidia’s powerful H100 chips has driven up prices and made them difficult to obtain.
+
+Pahlavan and his co-founders ultimately opted to use Amazon’s custom chips, known as Trainium, for training their AI—a process where systems ‘learn’ from vast amounts of data. After months of hard work, they were able to successfully train their AI on Amazon’s chips, though it was a challenging process.
+
+Pahlavan explained that his team at NinjaTech AI faced numerous challenges and bugs, requiring them to meet four times a week for months with an Amazon software team. Eventually, the two companies resolved the issues, and NinjaTech’s AI ‘agents,’ which carry out tasks for users, were launched in May. The company now boasts over one million monthly active users, all supported by models trained and operating on Amazon’s chips.
+
+Initially, there were a few bugs on both sides, says Gadi Hutt, an Amazon Web Services executive whose team collaborated with NinjaTech AI. But now, he adds, we’re moving full speed ahead.
+
+Amazon’s custom AI chips are used by companies like Anthropic, Airbnb, Pinterest, and Snap. While Amazon provides its cloud-computing customers access to Nvidia chips, they come at a higher cost compared to Amazon’s own AI chips. Despite this, Gadi Hutt notes that transitioning to Amazon’s chips would take time for customers.
+
+NinjaTech AI’s experience highlights a key reason why startups like it are willing to endure the challenges and extra development time needed to build AI outside of Nvidia’s walled garden: cost.
+
+Pahlavan states that to support over a million users each month, NinjaTech’s cloud services bill at Amazon is around $250,000 per month. He adds that if they were running the same AI on Nvidia chips, the cost would range between $750,000 and $1.2 million.
+
+Nvidia is fully aware of the competitive pressure and the high cost of its chips. CEO Huang has promised that the next generation of Nvidia’s AI-focused chips will reduce the costs of training AI on the company’s hardware.
+
+In the near future, Nvidia’s success will largely depend on inertia—the same force that has historically kept businesses and customers tied to other walled gardens, such as Apple’s.
