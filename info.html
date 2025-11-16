@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Son Tech — Team</title>
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+  :root{--bg:#0b0f1a;--ink:#e7ecff;--muted:#a1a9c9;--accent:#6ee7ff}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji;
+    color:var(--ink);background:radial-gradient(1200px 800px at 70% -10%, #11203a 0%, transparent 60%), var(--bg);
+    overflow-x:hidden
+  }
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:6rem 1.25rem}
+  .btn{display:inline-block;padding:.9rem 1.25rem;border-radius:999px;background:linear-gradient(135deg,#1b2a44,#0f1a2e);color:var(--ink);border:1px solid #243a63;backdrop-filter:blur(6px)}
+  .hero {
+  position: relative;
+  min-height: 60vh; /* was 100svh */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:0;text-align:center;letter-spacing:.02em;text-shadow:0 6px 30px #0008}
+  .sub{max-width:60ch;margin:.75rem auto 1.5rem;color:var(--muted);text-align:center}
+
+  /* Parallax */
+  .parallax{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .layer{
+    position:absolute;inset:-2vh -5vw;transform:translate3d(0,0,0);
+    will-change:transform;background-position:center;background-size:cover;opacity:.6;mix-blend-mode:screen
+  }
+  .layer.mountains{
+    background-image:url('./business-meeting.jpg');
+    opacity:.45;mix-blend-mode:screen
+  }
+
+  section{scroll-margin-top:10vh}
+  .cardgrid{display:flex;gap:1.25rem;}
+  .card{border:1px solid #243a63;background:linear-gradient(180deg,#0f1830,#0b1123);border-radius:18px;padding:1.25rem;box-shadow:0 20px 60px #00000055}
+  .card h3{margin:.25rem 0 .5rem;font-size:1.1rem}
+  .cta{display:flex;gap:1rem;justify-content:start;margin-top:1.25rem;flex-wrap:wrap}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#233a63,transparent);margin:3.5rem 0}
+  .feature{display:grid;gap:2rem;align-items:center;grid-template-columns:1.2fr .8fr}
+  .feature img{width:100%;border-radius:22px;border:1px solid #243a63;box-shadow:0 20px 60px #00000055;display:block;object-fit:cover}
+  @media (max-width:900px){.feature{grid-template-columns:1fr}}
+
+  .footer{color:var(--muted);text-align:center;padding:4rem 1rem}
+  .sparkle{position:absolute;inset:0;pointer-events:none;opacity:.25;background:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 80% 30%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 40% 70%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 65% 85%,#fff,transparent 60%);
+    animation:twinkle 7s linear infinite}
+  @keyframes twinkle{50%{opacity:.4}100%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.layer{transform:none !important}.sparkle{animation:none}}
+
+  
+
+  /* Brand */
+  .brand{
+    position:absolute; top:calc(16px + env(safe-area-inset-top));
+    left:calc(16px + env(safe-area-inset-left));
+    z-index:5; font-weight:800; letter-spacing:.08em; color:var(--ink);
+    text-decoration:none; padding:.4rem .75rem;
+  }
+  .brand:hover{ opacity:.9 }
+
+
+.navbar {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top));
+  right: calc(16px + env(safe-area-inset-right));
+  display: flex;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px dashed var(--accent);
+}
+
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <a class="brand" href="#top"><h2>SON TECH</h2></a>
+  <nav class="navbar">
+    <a href="./homepage.html">Home</a>
+    <a href="./team.html" class="active">Team</a>
+    <a href="./investment.html">Investment</a>
+    <a href="#cards">Insight</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="parallax" aria-hidden="true">
+    <div class="layer" data-speed="0.15"></div>
+    <div class="layer mountains" data-speed="0.3"></div>
+    <div class="layer" data-speed="0.55"></div>
+    <div class="sparkle"></div>
+  </div>
+
+  <div class="wrap" style="text-align:center;position:relative;z-index:1">
+    <h1>Meet Our Team</h1>
+    <p class="sub">Unite, Discipline, Hard-Working</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="features">
+    <div id="teamContainer" class="feature reveal from-right"></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer class="footer">
+    Built with vanilla vibes - <a href="#top">See more</a>
+  </footer>
+</main>
+
+<script>
+  // Fetch and render people.json into feature section
+  async function loadTeam() {
+    try {
+      const res = await fetch('./insights/people.json');
+      const data = await res.json();
+      const container = document.getElementById('teamContainer');
+
+      container.innerHTML = ''; // Clear existing
+
+      data.forEach((person, index) => {
+        // Alternate layout: left image/right text, then reverse
+        const reverse = index % 2 === 1 ? 'reverse' : '';
+
+        const feature = document.createElement('div');
+        feature.className = `feature reveal from-right ${reverse}`;
+        feature.style.marginBottom = "3rem";
+
+        feature.innerHTML = `
+          <img src="${person.img}" alt="${person.name}">
+          <div>
+            <h1 style="margin:0 0 .5rem">${person.name}</h1>
+            <h2 style="margin:0 0 .5rem">${person.title}</h2>
+            <p style="color:var(--muted);max-width:60ch">
+              ${person.type === 'PE' ? 'Private Equity professional' : person.type === 'VC' ? 'Venture Capital specialist' : 'Crypto industry leader'}.
+            </p>
+            <div class="cta"><a class="btn" href="${person.source}" target="_blank">Learn more</a></div>
+          </div>
+        `;
+        container.appendChild(feature);
+      });
+    } catch (err) {
+      console.error('Error loading people.json:', err);
+    }
+  }
+
+  loadTeam();
+</script>
+</body>
+</html>

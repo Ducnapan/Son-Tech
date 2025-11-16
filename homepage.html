@@ -29,7 +29,7 @@
     will-change:transform;background-position:center;background-size:cover;opacity:.6;mix-blend-mode:screen
   }
   .layer.mountains{
-    background-image:url('stock_bg.avif');
+    background-image:url('stock_bg.png');
     opacity:.45;mix-blend-mode:screen
   }
 
@@ -108,16 +108,55 @@
   .tc-prev{ left:.75rem } .tc-next{ right:.75rem }
   .tc-nav:focus-visible{ outline:2px solid var(--accent) }
   @media (prefers-reduced-motion: reduce){ .tc-track, .tc-slide{ transition:none !important } }
+  /* Navigation bar */
+.navbar {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top));
+  right: calc(16px + env(safe-area-inset-right));
+  display: flex;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px dashed var(--accent);
+}
+
 </style>
 </head>
 <body>
 <header class="hero" id="top">
   <a class="brand" href="#top"><h2>SON TECH</h2></a>
+  <nav class="navbar">
+    <a href="./homepage.html" class="active">Home</a>
+    <a href="./team.html">Team</a>
+    <a href="./investment.html">Investment</a>
+    <a href="#cards">Insight</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
   <div class="parallax" aria-hidden="true">
-    <div class="layer stars" data-speed="0.15"></div>
+    <div class="layer" data-speed="0.15"></div>
     <div class="layer mountains" data-speed="0.3"></div>
-    <div class="layer fog" data-speed="0.55"></div>
+    <div class="layer" data-speed="0.55"></div>
     <div class="sparkle"></div>
   </div>
 
@@ -125,8 +164,8 @@
     <h1>Ascending the Peak of our time</h1>
     <p class="sub">Fast, Accurate and Precised</p>
     <div class="cta">
-      <a class="btn" href="#features">See Features</a>
-      <a class="btn" href="#cards">Browse Cards</a>
+      <a class="btn" href="#features">About Us</a>
+      <a class="btn" href="#cards">Insights</a>
     </div>
   </div>
 </header>

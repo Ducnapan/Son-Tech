@@ -1,0 +1,60 @@
+[
+    {
+      "id": "1",
+      "name": "Hai Phung",
+      "title": "Managing Partner",
+      "type": "PE",
+      "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p1.png",
+      "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people1.txt"
+    },
+    {
+      "id": "2",
+      "name": "Tung Tran",
+      "title": "Investment Manager",
+      "type": "PE",
+      "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p2.png",
+      "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people2.txt"
+    },
+    {
+      "id": "3",
+      "name": "Ben Nguyen",
+      "title": "Investment Associate",
+      "type": "PE",
+      "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p3.png",
+      "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people3.txt"
+    },
+    {
+      "id": "4",
+      "name": "Huy Bui",
+      "title": "Investment Analyst",
+      "type": "PE",
+      "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p4.jpg",
+      "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people4.txt"
+    },
+    {
+      "id": "5",
+      "name": "The Anh",
+      "title": "Founder and CEO Of AnhReview Capital",
+      "type": "Crypto",
+      "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p5.png",
+      "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people5.txt"
+    },
+   
+    {
+        "id": "6",
+        "name": "Duong Nguyen",
+        "title": "Advisor",
+        "type": "VC",
+        "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p6.jpg",
+        "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people6.txt"
+    },
+    {
+        "id": "7",
+        "name": "Harry Do",
+        "title": "Investment Associate",
+        "type": "VC",
+        "img":"https://duc-photo.s3.ap-southeast-2.amazonaws.com/person/p7.png",
+        "source": "https://duc-photo.s3.ap-southeast-2.amazonaws.com/employees/people7.txt"
+    }
+  ]
+  

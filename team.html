@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Parallax Night — Smooth</title>
+<link rel="preconnect" href="https://images.unsplash.com">
+<style>
+  :root{--bg:#0b0f1a;--ink:#e7ecff;--muted:#a1a9c9;--accent:#6ee7ff}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji;
+    color:var(--ink);background:radial-gradient(1200px 800px at 70% -10%, #11203a 0%, transparent 60%), var(--bg);
+    overflow-x:hidden
+  }
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:6rem 1.25rem}
+  .btn{display:inline-block;padding:.9rem 1.25rem;border-radius:999px;background:linear-gradient(135deg,#1b2a44,#0f1a2e);color:var(--ink);border:1px solid #243a63;backdrop-filter:blur(6px)}
+  .hero {
+  position: relative;
+  min-height: 60vh; /* was 100svh */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:0;text-align:center;letter-spacing:.02em;text-shadow:0 6px 30px #0008}
+  .sub{max-width:60ch;margin:.75rem auto 1.5rem;color:var(--muted);text-align:center}
+
+  /* Parallax */
+  .parallax{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .layer{
+    position:absolute;inset:-2vh -5vw;transform:translate3d(0,0,0);
+    will-change:transform;background-position:center;background-size:cover;opacity:.6;mix-blend-mode:screen
+  }
+  .layer.mountains{
+    background-image:url('./business-meeting.jpg');
+    opacity:.45;mix-blend-mode:screen
+  }
+
+  section{scroll-margin-top:10vh}
+  .cardgrid{display:flex;gap:1.25rem;}
+  .card{border:1px solid #243a63;background:linear-gradient(180deg,#0f1830,#0b1123);border-radius:18px;padding:1.25rem;box-shadow:0 20px 60px #00000055}
+  .card h3{margin:.25rem 0 .5rem;font-size:1.1rem}
+  .cta{display:flex;gap:1rem;justify-content:start;margin-top:1.25rem;flex-wrap:wrap}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#233a63,transparent);margin:3.5rem 0}
+  .feature{display:grid;gap:2rem;align-items:center;grid-template-columns:1.2fr .8fr}
+  .feature img{width:100%;border-radius:22px;border:1px solid #243a63;box-shadow:0 20px 60px #00000055;display:block;object-fit:cover}
+  @media (max-width:900px){.feature{grid-template-columns:1fr}}
+
+  .footer{color:var(--muted);text-align:center;padding:4rem 1rem}
+  .sparkle{position:absolute;inset:0;pointer-events:none;opacity:.25;background:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 80% 30%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 40% 70%,#fff,transparent 60%),
+    radial-gradient(2px 2px at 65% 85%,#fff,transparent 60%);
+    animation:twinkle 7s linear infinite}
+  @keyframes twinkle{50%{opacity:.4}100%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.layer{transform:none !important}.sparkle{animation:none}}
+
+  
+
+  /* Brand */
+  .brand{
+    position:absolute; top:calc(16px + env(safe-area-inset-top));
+    left:calc(16px + env(safe-area-inset-left));
+    z-index:5; font-weight:800; letter-spacing:.08em; color:var(--ink);
+    text-decoration:none; padding:.4rem .75rem;
+  }
+  .brand:hover{ opacity:.9 }
+
+  /* Theater carousel */
+ /* Theater carousel */
+.theater-carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 3.25rem;
+}
+
+.tc-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tc-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  transition: transform 0.7s cubic-bezier(.22,1,.36,1);
+  will-change: transform;
+}
+
+.tc-slide {
+  flex: 0 0 100%; 
+  box-sizing: border-box;
+  padding: 1rem;
+  opacity: 0.85;
+  transform: scale(0.96);
+  transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s cubic-bezier(.22,1,.36,1);
+}
+.tc-slide img {
+  max-width: 199px;
+  max-height: 199px;
+  border-radius: 30px 30px 0 0;
+}
+.tc-slide.is-center {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Card styling inside slide */
+.tc-slide .card {
+  border: 1px solid #243a63;
+  background: linear-gradient(180deg, #0f1830, #0b1123);
+  border-radius: 0 0 18px 18px;
+  padding: 1rem;
+  box-shadow: 0 20px 60px #0006;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inner grid of people */
+.tc-slide .cardgrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+/* Nav buttons */
+.tc-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid #243a63;
+  background: linear-gradient(135deg, #1b2a44, #0f1a2e);
+  color: var(--ink);
+  box-shadow: 0 10px 30px #0008;
+  cursor: pointer;
+  z-index: 2;
+}
+.tc-prev { left: .75rem; }
+.tc-next { right: .75rem; }
+.tc-nav:focus-visible { outline: 2px solid var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-track, .tc-slide { transition: none !important; }
+}
+.navbar {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top));
+  right: calc(16px + env(safe-area-inset-right));
+  display: flex;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.navbar a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 2px dashed var(--accent);
+}
+
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <a class="brand" href="#top"><h2>SON TECH</h2></a>
+  <nav class="navbar">
+    <a href="./homepage.html">Home</a>
+    <a href="./team.html" class="active">Team</a>
+    <a href="./investment.html">Investment</a>
+    <a href="#cards">Insight</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="parallax" aria-hidden="true">
+    <div class="layer" data-speed="0.15"></div>
+    <div class="layer mountains" data-speed="0.3"></div>
+    <div class="layer" data-speed="0.55"></div>
+    <div class="sparkle"></div>
+  </div>
+
+  <div class="wrap" style="text-align:center;position:relative;z-index:1">
+    <h1>Meet Our Team</h1>
+    <p class="sub">Unite, Discipline, Hard-Working</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="features">
+    
+
+    
+
+    <div class="feature reveal from-right">
+      <img alt="Bitcoin" src="./son-ta.jpg">
+      <div>
+        <h1 style="margin:0 0 .5rem" >Son Ta</h1>
+        <h2 style="margin:0 0 .5rem">General Partner</h2>
+        <p style="color:var(--muted);max-width:60ch">
+            “In every journey, the greatest challenge is not starting but staying true to the values you pursue.”
+ 
+            Founder Son Ta not only leads Son Tech Global as an innovative investment fund but also aims to share his practical experiences and lessons learned from his own journey. He firmly believes that every idea, when given the right opportunities and proper support, has the potential to drive meaningful change.
+        </p>
+        <div class="cta"><a class="btn" href="#cards">Explore</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="wrap" id="cards">
+    <h1 style="margin:0 0 1rem">Team</h1>
+
+    <!-- Theater Carousel (data-driven) -->
+    <section class="theater-carousel" aria-label="Featured items">
+      <button class="tc-nav tc-prev" aria-label="Previous">&#10094;</button>
+      <div class="tc-viewport">
+        <ul class="tc-track"><!-- slides injected from JSON --></ul>
+      </div>
+      <button class="tc-nav tc-next" aria-label="Next">&#10095;</button>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  Built with vanilla vibes • <a href="#top">See more</a>
+</footer>
+
+<script>
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Parallax */
+  if(!reduceMotion){
+    const hero = document.querySelector('.hero');
+    const layers = [...document.querySelectorAll('.layer')];
+    let target = 0, current = 0;
+    let last = performance.now();
+    const easePerSec = 7;
+
+    function computeTarget(){
+      const r = hero.getBoundingClientRect();
+      target = Math.min(1, Math.max(0, (0 - r.top) / (r.height || 1)));
+    }
+
+    function tick(now){
+      const dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      current += (target - current) * (1 - Math.exp(-easePerSec * dt));
+      for(const el of layers){
+        const speed = Math.max(0, Math.min(1, parseFloat(el.dataset.speed||0.2)));
+        const y = current * 100 * speed;
+        el.style.transform = `translate3d(0, ${y}px, 0)`;
+      }
+      requestAnimationFrame(tick);
+    }
+
+    computeTarget();
+    requestAnimationFrame(tick);
+    addEventListener('scroll', computeTarget, {passive:true});
+    addEventListener('resize', computeTarget, {passive:true});
+    addEventListener('orientationchange', computeTarget, {passive:true});
+  }
+
+  /* Reveal on scroll */
+  (function(){
+    const els = [...document.querySelectorAll('.reveal')];
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      els.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const io = new IntersectionObserver((entries, obs) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          obs.unobserve(e.target);
+        }
+      }
+    }, { root: null, threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    els.forEach(el => io.observe(el));
+  })();
+
+  /* === Data-driven theater carousel === */
+  /* === Data-driven theater carousel (grouped by type) === */
+/* === Data-driven theater carousel (1 type per slide) === */
+(async function(){
+  const root = document.querySelector('.theater-carousel');
+  const track = root.querySelector('.tc-track');
+  const viewport = root.querySelector('.tc-viewport');
+  const prevBtn = root.querySelector('.tc-prev');
+  const nextBtn = root.querySelector('.tc-next');
+
+  // Load JSON
+  let data = [];
+  try {
+    const res = await fetch('./insights/people.json', { cache: 'no-store' });
+    data = await res.json();
+  } catch (e) {
+    console.error('Failed to load insights/path.json', e);
+  }
+
+  /* Group by type */
+  const groups = data.reduce((acc, person) => {
+    acc[person.type] = acc[person.type] || [];
+    acc[person.type].push(person);
+    return acc;
+  }, {});
+  const typeOrder = Object.keys(groups);
+
+  /* Build slides — one per type */
+  track.innerHTML = typeOrder.map(type => {
+    const people = groups[type];
+    return `
+      <li class="tc-slide" data-type="${type}">
+        <div class="card" style="padding:2rem; text-align:center;">
+          <h2 style="color:var(--accent);margin:0 0 1.25rem">${type}</h2>
+          <div class="cardgrid" style="flex-direction:row;justify-items:center">
+            ${people.map(p => `
+                <div style="flex-direction:column">
+                <a class="tc-link" href="${p.source}" target="_blank" rel="noopener">
+                <img src="${p.img}"></img>
+              <div class="card" style="max-width:220px">
+                <h3>${p.name}</h3>
+                <p style="color:var(--muted);margin:0.25rem 0">${p.title}</p>
+                </a>
+              </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </li>
+    `;
+  }).join('');
+
+  /* === Carousel logic (one full slide visible at a time) === */
+  const slides = Array.from(track.children);
+  if (!slides.length) return;
+
+  let current = 0;
+  const ease = 'cubic-bezier(.22,1,.36,1)';
+
+  function updateSlide(index, animate = true){
+    current = (index + slides.length) % slides.length;
+    const offset = -current * viewport.offsetWidth;
+    track.style.transition = animate ? `transform 0.7s ${ease}` : 'none';
+    track.style.transform = `translate3d(${offset}px,0,0)`;
+    slides.forEach(s => s.classList.remove('is-center'));
+    slides[current].classList.add('is-center');
+  }
+
+  function go(delta){ updateSlide(current + delta); }
+
+  // Buttons
+  prevBtn.addEventListener('click', ()=>go(-1));
+  nextBtn.addEventListener('click', ()=>go(1));
+
+  // Autoplay
+  let autoplay;
+  function startAutoplay(){ stopAutoplay(); autoplay = setInterval(()=>go(1), 5000); }
+  function stopAutoplay(){ clearInterval(autoplay); }
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+
+  // Resize handling
+  window.addEventListener('resize', ()=>updateSlide(current,false));
+
+  // Init
+  updateSlide(0,false);
+  startAutoplay();
+})();
+
+
+</script>
+</body>
+</html>

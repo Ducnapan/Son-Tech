@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Son Tech - Investment</title>
+<link rel="preconnect" href="https://images.unsplash.com">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<style>
+  :root{--bg:#0b0f1a;--ink:#e7ecff;--muted:#a1a9c9;--accent:#6ee7ff; --circle-size: clamp(48px, 8vw, 80px);  --accent-1: #4fd1c5;--accent-2: #60a5fa;}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji;
+    color:var(--ink);background:radial-gradient(1200px 800px at 70% -10%, #11203a 0%, transparent 60%), var(--bg);
+    overflow-x:hidden
+  }
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:1100px;margin:auto;padding:6rem 1.25rem}
+  .btn{display:inline-block;padding:.9rem 1.25rem;border-radius:999px;background:linear-gradient(135deg,#1b2a44,#0f1a2e);color:var(--ink);border:1px solid #243a63;backdrop-filter:blur(6px); margin: .25rem;}
+  .hero{position:relative;min-height:60vh;display:grid;place-items:center;overflow:hidden}
+  .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:0;text-align:center;letter-spacing:.02em;text-shadow:0 6px 30px #0008}
+  .sub{max-width:60ch;margin:.75rem auto 1.5rem;color:var(--muted);text-align:center}
+  .parallax{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .layer{position:absolute;inset:-2vh -5vw;transform:translate3d(0,0,0);will-change:transform;background-position:center;background-size:cover;opacity:.6;mix-blend-mode:screen}
+  .layer.mountains{background-image:url('./business-meeting.jpg');opacity:.45;mix-blend-mode:screen}
+  section{scroll-margin-top:10vh}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,#233a63,transparent);margin:3.5rem 0}
+  .footer{color:var(--muted);text-align:center;padding:4rem 1rem}
+  .brand{position:absolute;top:calc(16px + env(safe-area-inset-top));left:calc(16px + env(safe-area-inset-left));z-index:5;font-weight:800;letter-spacing:.08em;color:var(--ink);text-decoration:none;padding:.4rem .75rem;}
+  .navbar{position:absolute;top:calc(16px + env(safe-area-inset-top));right:calc(16px + env(safe-area-inset-right));display:flex;gap:2rem;z-index:10;}
+  .navbar a{color:var(--ink);text-decoration:none;font-weight:500;position:relative;padding-bottom:4px;transition:color .3s ease;}
+  .navbar a:hover{color:var(--accent);}
+  .navbar a.active::after{content:"";position:absolute;left:0;bottom:0;width:100%;border-bottom:2px dashed var(--accent);}
+  .chart-container {
+  width: 380px;
+  height: 380px;
+  background: rgba(18,26,44,0.6);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #243a63;
+}
+ /* Slide-in on scroll */
+ .reveal{ opacity:0; transform:translateX(var(--slide,0));
+    transition:transform .8s cubic-bezier(.22,1,.36,1), opacity .8s ease-out; will-change:transform,opacity }
+  .reveal.from-left{ --slide:-60px } .reveal.from-right{ --slide:60px }
+  .reveal.in-view{ opacity:1; transform:translateX(0) }
+  .reveal > *{ transition:inherit }
+  .reveal.in-view > *:nth-child(1){ transition-delay:.05s }
+  .reveal.in-view > *:nth-child(2){ transition-delay:.12s }
+  .reveal.in-view > *:nth-child(3){ transition-delay:.18s }
+
+.chart-container h2 {
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  text-align: center;
+  padding-top: 2rem;
+}
+.column{
+      display:flex;
+      flex-direction:column;
+      gap:var(--gap);
+      align-items:center;
+      justify-content:center;
+      min-width: calc(var(--circle-size) + 8px);
+    }
+
+    .column:nth-child(odd){
+      transform: translateY(0);
+    }
+    .column:nth-child(even){
+      transform: translateY(10%);
+    }
+
+    .circle{
+      margin: .25rem;
+      width:var(--circle-size);
+      height:var(--circle-size);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      letter-spacing:0.6px;
+      user-select:none;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.5), inset 0 -6px 12px rgba(255,255,255,0.02);
+      transition: transform .18s ease, filter .18s ease;
+    }
+
+    .circle:nth-child(odd){
+      background: linear-gradient(135deg,var(--accent-1), #2dd4bf);
+      color:#032024;
+    }
+    .circle:nth-child(even){
+      background: linear-gradient(135deg,var(--accent-2), #3b82f6);
+      color:#04203a;
+    }
+
+    .circle:hover{
+      transform: translateY(-4px) scale(1.03);
+      filter: brightness(1.06);
+    }
+
+    @media (max-width:720px){
+      .wrap{
+        gap:6px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .column:nth-child(even){ transform: translateY(0); }
+    }
+
+    .caption{
+      text-align:center;
+      margin-top:10px;
+      font-size:13px;
+      color:rgba(255,255,255,0.75);
+    }
+    .circle-wrap{ 
+      padding:24px;
+      display:flex;
+      gap:var(--gap);
+      align-items:flex-end;
+    }
+    .circle img{
+      width: 70%;
+    }
+
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <a class="brand" href="#top"><h2>SON TECH</h2></a>
+  <nav class="navbar">
+    <a href="./homepage.html">Home</a>
+    <a href="./team.html">Team</a>
+    <a href="./investment.html" class="active">Investment</a>
+    <a href="#cards">Insight</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="parallax" aria-hidden="true">
+    <div class="layer" data-speed="0.15"></div>
+    <div class="layer mountains" data-speed="0.3"></div>
+    <div class="layer" data-speed="0.55"></div>
+  </div>
+  <div class="wrap" style="text-align:center;position:relative;z-index:1">
+    <h1>Investment</h1>
+    <p class="sub">Our investment diversified investment across technology, finance, and innovation sectors</p>
+    <div class="cta">
+      <a class="btn" href="#pe">Public Equity</a>
+      <a class="btn" href="#crypto">Crypto</a>
+      <a class="btn" href="#vc">Venture Captital</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="pe" style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:center;flex-direction: column;">
+    <div style="align-self: flex-start;">
+    <h1>Public Equity</h1>
+    <p>Son Tech Global manages a <strong>$50 million Public Equity Fund </strong>
+      <br/>strategically allocated across three key markets: Vietnam, China (Hong Kong), and the United States.
+      <br/>With a focus on investing in Blue-Chip and Mega Stocks within the Banking and Construction Materials
+      <br/>sectors in the Vietnamese market, as well as the Technology sector in the USA and China, the fund 
+      <br/>aims to maximize returns for its shareholders and investors.</p>
+    </div>
+    <div style="display: flex;flex-direction: row;gap:2rem;">
+    <div class="chart-container">
+      <h2>Investment Allocation Sectors</h2>
+      <canvas id="donutChart1"></canvas>
+    </div>
+    <div class="chart-container">
+      <h2>Country-Specific Capital Allocation</h2>
+      <canvas id="donutChart2"></canvas>
+    </div>
+  </div>
+  </div>
+  <div class="divider"></div>
+  <div class="wrap" id="crypto" style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:center;flex-direction: column;">
+    <div style="align-self: flex-start;">
+    <h1>Crypto</h1>
+    <h3>AR Ventures - Strategic Partner of Son Tech Global</h3>
+    <ul>
+      <li>Son Tech Global is proud to be the strategic partner of AR Ventures, an investment fund specializing in cryptocurrency and blockchain technology</li>
+      <li><strong>Mission:</strong>To support promising Startups and Public Crypto companies in driving innovation in the Crypto and Blockchain space</li>
+      <li><strong>Assets Allocation:</strong>Assets Allocated in Crypto and Blockchain Space: <strong>$15 million USD</strong></li>
+      <li><strong>Commitments</strong>Providing funding to empower Crypto projects and companies to achieve exceptional growth and drive
+        <br/> innovation in the Crypto and Blockchain space</li>
+      <li><strong>Deep Expertise:</strong>Our strategic partner, Anh Review Capital Ventures (ARV), has a team with deep expertise in Crypto, having worked in the Crypto and Blockchain space for 8 years</li>
+      <li><strong>Global Network: </strong>Our strategic partner, Anh Review Capital Venture, has strong connections with global partners in the Crypto and Blockchain space</li>
+      <li>Together, <strong>AR Ventures and Son Tech Global</strong> are committed to advancing groundbreaking projects and shaping the future of blockchain technology.</li>
+    </ul>
+    </div>
+    <div style="display: flex;flex-direction: row;gap:2rem;">
+    <div class="chart-container">
+      <h2>Our Portfolio</h2>
+      <canvas id="donutChart3"></canvas>
+    </div>
+   
+  </div>
+  </div>
+  <div class="divider"></div>
+  <div class="wrap" id="vc" style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:flex-start;flex-direction: column;">
+    <div style="align-self: flex-start;">
+    <h1>Venture Investment Portfolio</h1>
+    <p>Son Tech Global is dedicated to supporting and accelerating
+      <br/> the growth of startups in Vietnam and worldwide, with a focus on high-potential,
+      <br/> breakthrough sectors such as EduTech, FinTech, Logistics, Entertainment,
+      <br/> Digital Healthcare, and Consumer Technology</p>
+    </div>
+    <div style="display: flex;flex-direction: row;gap:2rem;">
+      <div class="circle-wrap">
+        <div class="column">
+          <div class="circle"><img src="./logo/logo1.svg"></div>
+          <div class="circle"><img src="./logo/logo2.png"></div>
+        </div>
+        <div class="column">
+          <div class="circle"><img src="./logo/logo3.svg"></div>
+          <div class="circle"><img src="./logo/logo4.svg"></div>
+          <div class="circle"><img src="./logo/logo5.png"></div>
+        </div>
+        <div class="column">
+          <div class="circle"><img src="./logo/logo6.png"></div>
+          <div class="circle"><img src="./logo/logo7.png"></div>
+        </div>
+        <div class="column">
+          <div class="circle"><img src="./logo/logo8.png"></div>
+          <div class="circle"><img src="./logo/logo9.png"></div>
+          <div class="circle"><img src="./logo/logo10.png"></div>
+        </div>
+        <div class="column">
+          <div class="circle"><img src="./logo/logo11.png"></div>
+          <div class="circle"><img src="./logo/logo12.svg"></div>
+        </div>
+      </div>
+    
+   
+  </div>
+  </div>
+  <div class="divider"></div>
+</main>
+
+
+<footer class="footer">
+  Built with vanilla vibes • <a href="#top">Back to top</a>
+</footer>
+
+<script>
+  const ctx1 = document.getElementById('donutChart1').getContext('2d');
+  const ctx2 = document.getElementById('donutChart2').getContext('2d');
+  const ctx3 = document.getElementById('donutChart3').getContext('2d');
+
+  new Chart(ctx1, {
+    type: 'doughnut',
+    data: {
+      labels: ["Infrastructure & Construction", "Finance & Banking", "Biotechnology", "Electronic Technology"],
+      datasets: [{
+        data: [30, 25, 20, 25],
+        backgroundColor: ['#00e0ff', '#8b5cf6', '#f59e0b', '#10b981'],
+        borderWidth: 2,
+        borderColor: '#0b0f1a'
+      }]
+    },
+    options: {
+      cutout: '65%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { color: '#e7ecff', font: { size: 14 } }
+        },
+        datalabels: {
+          color: '#e7ecff',
+          font: { weight: '700', size: 13 },
+          formatter: (value, ctx) => {
+            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            const pct = Math.round((value / total) * 100);
+            return pct > 0 ? pct + '%' : '';
+          },
+          anchor: 'center',
+          align: 'center'
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+  new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+      labels: ["VietNam","China","Hong Kong"],
+      datasets: [{
+        data: [70,20,10],
+        backgroundColor: ['#00e0ff', '#8b5cf6', '#f59e0b', '#10b981'],
+        borderWidth: 2,
+        borderColor: '#0b0f1a'
+      }]
+    },
+    options: {
+      cutout: '65%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { color: '#e7ecff', font: { size: 14 } }
+        },
+        datalabels: {
+          color: '#e7ecff',
+          font: { weight: '700', size: 13 },
+          formatter: (value, ctx) => {
+            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            const pct = Math.round((value / total) * 100);
+            return pct > 0 ? pct + '%' : '';
+          },
+          anchor: 'center',
+          align: 'center'
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+  new Chart(ctx3, {
+    type: 'doughnut',
+    data: {
+      labels: ["BTC", "ETH", "LINK", "PENDLE", "SUI", "ETHW", "PEPE"],
+      datasets: [{
+        data: [30,20,20,10,10,5,5],
+        backgroundColor: ['#00e0ff', '#8b5cf6', '#f59e0b', '#10b981'],
+        borderWidth: 2,
+        borderColor: '#0b0f1a'
+      }]
+    },
+    options: {
+      cutout: '65%',
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: { color: '#e7ecff', font: { size: 14 } }
+        },
+        datalabels: {
+          color: '#e7ecff',
+          font: { weight: '700', size: 13 },
+          formatter: (value, ctx) => {
+            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+            const pct = Math.round((value / total) * 100);
+            return pct > 0 ? pct + '%' : '';
+          },
+          anchor: 'center',
+          align: 'center'
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+</script>
+</body>
+</html>
